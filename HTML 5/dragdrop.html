@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    #getData
+    {
+        width: 250px;
+        height: 200px;
+        padding: 10px;
+        border: 3px solid #aaaaaa;
+    }
+</style>
+<script>
+    function allowDrop(even)
+    {
+        even.preventDefault();
+    }
+    function drag(even)
+    {
+        even.data.Transfer.setData("text",even.target.id);
+    }
+    function drop(even)
+    {
+        even.preventDefault();
+        var fetchData=even.dataTransfer.getData("text");
+        even.target.appendChild(document.getElementById(fetchData));
+    }
+</script>
+</head>
+<body>
+    <h3>Drag the image to into the rectangle :</h3>
+    <div id="getData" 
+    ondrop="drop(event)" ondragover="allowDrop(event)">
+    </div>
+    <br>
+    <img id="dragData"
+    src="https://t3.ftcdn.net/jpg/01/89/08/24/360_F_189082466_Daw7ZcYzcYnbrkYocKUxwmpOf39ucC1g.jpg"
+    draggable="true"
+    ondragstart="drag(event)"
+    width="200"
+    height="150">
+</body>
+</html>
